@@ -3,7 +3,7 @@
 This repository is designed to demonstrate the use of simple Spark Structured APIs using a small dataset. 
 
 ## Dataset Description
-This repository contains two datasets with the following fields and schemas: 
+This repository will contain two datasets with the following fields and schemas, created by running the datagen.py file: 
 
 1. songs_metadata.csv- song_id, title, artist, genre, mood
 
