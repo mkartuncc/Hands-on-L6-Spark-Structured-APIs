@@ -10,6 +10,10 @@ spark = SparkSession.builder.appName("MusicAnalysis").getOrCreate()
 logs_df = spark.read.csv("listening_logs.csv", header=True, inferSchema=True)
 songs_df = spark.read.csv("songs_metadata.csv", header=True, inferSchema=True)
 
+# Display schemas
+#logs_df.printSchema()
+#songs_df.printSchema()
+
 # Task 1: User Favorite Genres
 # Join logs with songs metadata
 logs_with_genre = logs_df.join(songs_df, on="song_id", how="inner")
@@ -37,4 +41,4 @@ from pyspark.sql.types import TimestampType
 logs_df = logs_df.withColumn("timestamp", to_timestamp("timestamp", "yyyy-MM-dd HH:mm:ss"))
 night_logs = logs_df.filter((hour(col("timestamp")) >= 0) & (hour(col("timestamp")) < 5))
 night_users = night_logs.select("user_id").distinct()
-night_users.show(10)
+night_users.show()
